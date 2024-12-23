@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    command: bash -c "rails s -b '0.0.0.0'"
+    volumes:
+      - ./backend:/myapp
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+
+volumes:
+  postgres_data:
