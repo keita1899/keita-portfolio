@@ -22,5 +22,19 @@ services:
     volumes:
       - 'postgres_data:/var/lib/postgresql/data'
 
+  frontend:
+    build:
+      dockerfile: ./frontend/Dockerfile
+
+    tty: true
+
+    stdin_open: true
+
+    volumes:
+      - ./frontend:/myapp
+
+    ports:
+      - '8000:3000'
+
 volumes:
   postgres_data:
