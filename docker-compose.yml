@@ -9,6 +9,9 @@ services:
       - 3000:3000
     depends_on:
       - db
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'postgres'
     tty: true
     stdin_open: true
 
