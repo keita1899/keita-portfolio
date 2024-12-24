@@ -3,17 +3,17 @@ import { Button, TextField, Container, Typography } from '@mui/material'
 
 const Index = () => {
   return (
-    <Container maxWidth='sm'>
-      <Typography variant='h4' component='h1' gutterBottom>
+    <Container maxWidth="sm">
+      <Typography variant="h4" component="h1" gutterBottom>
         Next.js & MUI Sample Page
       </Typography>
       <TextField
-        label='Your Name'
-        variant='outlined'
+        label="Your Name"
+        variant="outlined"
         fullWidth
-        margin='normal'
+        margin="normal"
       />
-      <Button variant='contained' color='primary'>
+      <Button variant="contained" color="primary">
         Click Me
       </Button>
     </Container>
