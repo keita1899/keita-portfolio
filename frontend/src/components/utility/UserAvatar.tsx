@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { Avatar } from '@mui/material'
+import Image from 'next/image'
 
 type AvatarProps = {
   url: string

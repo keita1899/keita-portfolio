@@ -1,6 +1,6 @@
+import { Link as MuiLink, Typography } from '@mui/material'
 import Link from 'next/link'
 import { ReactNode } from 'react'
-import { Link as MuiLink, Typography } from '@mui/material'
 
 type NavLinkProps = {
   href: string
