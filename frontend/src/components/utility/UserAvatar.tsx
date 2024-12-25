@@ -12,7 +12,7 @@ export const UserAvatar = ({ url, username }: AvatarProps) => {
       <Image
         src={url}
         alt={username}
-        layout="intrinsic"
+        style={{ width: '40px', height: '40px' }}
         width={40}
         height={40}
       />
