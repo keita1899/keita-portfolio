@@ -1,11 +1,14 @@
 import '@/styles/globals.css'
-import { AppCacheProvider } from '@mui/material-nextjs/v14-pagesRouter'
 import type { AppProps } from 'next/app'
+import { AppCacheProvider } from '@mui/material-nextjs/v14-pagesRouter'
+import { Layout } from '@/components/layouts/Layout'
 
-export default function App(props: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AppCacheProvider {...props}>
-      <props.Component />
+    <AppCacheProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AppCacheProvider>
   )
 }
