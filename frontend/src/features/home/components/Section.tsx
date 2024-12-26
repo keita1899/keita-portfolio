@@ -7,20 +7,20 @@ import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
 type SectionProps = {
   title: string
   description?: string
-  backGroundColor?: string
+  backgroundColor?: string
   children: ReactNode
 }
 
 export const Section = ({
   title,
   description,
-  backGroundColor,
+  backgroundColor,
   children,
 }: SectionProps) => {
   return (
     <Box
       sx={{
-        backgroundColor: backGroundColor,
+        backgroundColor: backgroundColor,
         paddingY: 8,
         minHeight: '500px',
         display: 'flex',
