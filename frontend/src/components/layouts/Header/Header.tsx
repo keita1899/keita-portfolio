@@ -8,10 +8,7 @@ type HeaderProps = {
 
 export const Header = ({ username, avatar }: HeaderProps) => {
   return (
-    <Box
-      component="header"
-      sx={{ backgroundColor: '#f5f5f5', padding: '16px 0' }}
-    >
+    <Box component="header" sx={{ padding: '16px 0' }}>
       <Container
         sx={{
           display: 'flex',
