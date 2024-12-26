@@ -39,7 +39,7 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
           </Box>
         </Container>
       </Section>
-      <Section title="Portfolio" backGroundColor="#f0f0f0">
+      <Section title="Portfolio" backgroundColor="#f0f0f0">
         <Container maxWidth="lg" sx={{ marginTop: 3 }}>
           <PortfolioCardList portfolios={firstThreePortfolios} />
           <Box sx={{ marginTop: 6 }}>
@@ -49,7 +49,7 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
           </Box>
         </Container>
       </Section>
-      <Section title="Skill" description="主な使用技術" backGroundColor="#fff">
+      <Section title="Skill" description="主な使用技術" backgroundColor="#fff">
         <Container maxWidth="sm" sx={{ marginTop: 3 }}>
           <SkillList skills={skills} />
           <Box sx={{ marginTop: 6 }}>
@@ -62,7 +62,7 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
       <Section
         title="Development Environment"
         description="主に以下の環境で開発しています。"
-        backGroundColor="#f0f0f0"
+        backgroundColor="#f0f0f0"
       >
         <Container maxWidth="xs" sx={{ marginTop: 3 }}>
           <EnvironmentList environments={environments} />
