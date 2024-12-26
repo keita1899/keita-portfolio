@@ -7,7 +7,10 @@ import { NavLink } from './NavLink'
 
 export const Nav = () => {
   return (
-    <Box component="nav" sx={{ backgroundColor: '#D6DBDC', color: '#222' }}>
+    <Box
+      component="nav"
+      sx={{ color: '#222', borderBottom: '1px solid #e0e0e0' }}
+    >
       <Toolbar sx={{ display: 'flex', justifyContent: 'center', paddingY: 2 }}>
         <Box sx={{ display: 'flex', gap: 4 }}>
           <NavLink href="/" icon={<HomeIcon />} label="Home" />

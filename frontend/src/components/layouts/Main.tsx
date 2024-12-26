@@ -12,7 +12,6 @@ export const Main = ({ children }: MainProps) => {
       component="main"
       sx={{
         minHeight: 'calc(100vh - 64px)',
-        padding: 2,
       }}
     >
       <Content>{children}</Content>

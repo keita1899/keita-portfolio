@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 import { ReactNode } from 'react'
 
 type ContentProps = {
@@ -6,5 +6,5 @@ type ContentProps = {
 }
 
 export const Content = ({ children }: ContentProps) => {
-  return <Container>{children}</Container>
+  return <Box>{children}</Box>
 }

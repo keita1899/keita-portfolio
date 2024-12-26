@@ -1,5 +1,6 @@
 import { Link as MuiLink, Typography } from '@mui/material'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
 type NavLinkProps = {
@@ -9,6 +10,9 @@ type NavLinkProps = {
 }
 
 export const NavLink = ({ href, icon, label }: NavLinkProps) => {
+  const pathname = usePathname()
+  const isActive = pathname === href
+
   return (
     <MuiLink
       component={Link}
@@ -17,8 +21,9 @@ export const NavLink = ({ href, icon, label }: NavLinkProps) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        color: '#222',
+        color: isActive ? '#1976d2' : '#222',
         textDecoration: 'none',
+        fontWeight: isActive ? 'bold' : 'normal',
         '&:hover': { color: '#1976d2' },
       }}
     >
