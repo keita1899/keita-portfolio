@@ -22,7 +22,7 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
 
   return (
     <HomeLayout>
-      <Section title="About" backGroundColor="#fff">
+      <Section title="About" backgroundColor="#fff">
         <Container maxWidth="xs" sx={{ marginTop: 3 }}>
           <p>Webエンジニアを目指して勉強中です。</p>
           <p>書籍やudemyで学習しています。</p>
