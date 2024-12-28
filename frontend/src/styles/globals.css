@@ -12,3 +12,7 @@ body {
     rgb(var(--background-start-rgb));
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+}

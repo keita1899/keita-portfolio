@@ -12,7 +12,6 @@ export const DetailLink = ({ href }: DetailLinkProps) => {
       href={href}
       sx={{
         display: 'inline-block',
-        textDecoration: 'none',
         padding: '8px 16px',
         backgroundColor: 'primary.main',
         color: 'white',
