@@ -1,9 +1,8 @@
 import { Box, Container } from '@mui/material'
-import { HomeLayout } from '@/components/layouts/HomeLayout'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
 import { EnvironmentList } from '@/features/home/components/EnvrionmentList'
-import { PortfolioCardList } from '@/features/home/components/PortfolioCardList'
 import { ScrollToTopButton } from '@/features/home/components/ScrollTopButton'
 import { Section } from '@/features/home/components/Section'
 import { SkillList } from '@/features/home/components/SkillList'
@@ -21,7 +20,7 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
   const firstThreePortfolios = portfolios.slice(0, 3)
 
   return (
-    <HomeLayout>
+    <>
       <Section title="About" backgroundColor="#fff">
         <Container maxWidth="xs" sx={{ marginTop: 3 }}>
           <p>Webエンジニアを目指して勉強中です。</p>
@@ -69,18 +68,66 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
         </Container>
       </Section>
       <ScrollToTopButton />
-    </HomeLayout>
+    </>
   )
 }
 
 export const getStaticProps = async () => {
   const portfolios = [
-    { id: 1, name: 'Project 1', thumbnail: '/images/project1-thumbnail.jpg' },
-    { id: 2, name: 'Project 2', thumbnail: '/images/project2-thumbnail.jpg' },
-    { id: 3, name: 'Project 3', thumbnail: '/images/project3-thumbnail.jpg' },
-    { id: 4, name: 'Project 4', thumbnail: '/images/project4-thumbnail.jpg' },
-    { id: 5, name: 'Project 5', thumbnail: '/images/project5-thumbnail.jpg' },
-    { id: 6, name: 'Project 6', thumbnail: '/images/project6-thumbnail.jpg' },
+    {
+      id: 1,
+      name: 'Project 1',
+      thumbnail: '/images/project1-thumbnail.jpg',
+      description: 'This is a description of Project 1.',
+      demoUrl: 'https://project1-demo.com',
+      githubUrl: 'https://github.com/user/project1',
+      tags: ['React', 'Next.js', 'Node.js'],
+    },
+    {
+      id: 2,
+      name: 'Project 2',
+      thumbnail: '/images/project2-thumbnail.jpg',
+      description: 'This is a description of Project 2.',
+      demoUrl: 'https://project2-demo.com',
+      githubUrl: 'https://github.com/user/project2',
+      tags: ['Rails', 'PostgreSQL', 'Docker'],
+    },
+    {
+      id: 3,
+      name: 'Project 3',
+      thumbnail: '/images/project3-thumbnail.jpg',
+      description: 'This is a description of Project 3.',
+      demoUrl: 'https://project3-demo.com',
+      githubUrl: 'https://github.com/user/project3',
+      tags: ['Vue.js', 'CSS', 'API'],
+    },
+    {
+      id: 4,
+      name: 'Project 4',
+      thumbnail: '/images/project4-thumbnail.jpg',
+      description: 'This is a description of Project 4.',
+      demoUrl: 'https://project4-demo.com',
+      githubUrl: 'https://github.com/user/project4',
+      tags: ['Angular', 'TypeScript', 'Firebase'],
+    },
+    {
+      id: 5,
+      name: 'Project 5',
+      thumbnail: '/images/project5-thumbnail.jpg',
+      description: 'This is a description of Project 5.',
+      demoUrl: 'https://project5-demo.com',
+      githubUrl: 'https://github.com/user/project5',
+      tags: ['Next.js', 'GraphQL', 'AWS'],
+    },
+    {
+      id: 6,
+      name: 'Project 6',
+      thumbnail: '/images/project6-thumbnail.jpg',
+      description: 'This is a description of Project 6.',
+      demoUrl: 'https://project6-demo.com',
+      githubUrl: 'https://github.com/user/project6',
+      tags: ['Svelte', 'API', 'WebSocket'],
+    },
   ]
 
   const skills = [
