@@ -25,7 +25,7 @@ export const PortfolioCard = ({
 }: Portfolio) => {
   return (
     <Grid item xs={12} sm={6} md={4} key={id}>
-      <Link href={`/portfolios/${id}`}>
+      <Link href={`/portfolios/${id}`} passHref>
         <Card
           sx={{
             transition: 'transform 0.3s ease-in-out',
