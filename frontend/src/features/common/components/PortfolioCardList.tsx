@@ -10,7 +10,7 @@ export const PortfolioCardList = ({ portfolios }: PortfolioCardListProps) => {
   return (
     <Grid container spacing={4}>
       {portfolios.map((portfolio) => (
-        <PortfolioCard key={portfolio.id} portfolio={portfolio} />
+        <PortfolioCard key={portfolio.id} {...portfolio} />
       ))}
     </Grid>
   )
