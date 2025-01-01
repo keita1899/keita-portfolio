@@ -1,8 +1,8 @@
 import { Box, Container, Typography } from '@mui/material'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { portfolios } from '@/data/portfolios'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { Portfolio } from '@/types/portfolio'
-import { portfolios } from '@/data/portfolios'
 
 type PortfolioIndexProps = {
   portfolios: Portfolio[]

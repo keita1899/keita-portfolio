@@ -1,5 +1,8 @@
 import { Box, Container } from '@mui/material'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { environments } from '@/data/environments'
+import { portfolios } from '@/data/portfolios'
+import { skills } from '@/data/skills'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
 import { EnvironmentList } from '@/features/home/components/EnvrionmentList'
@@ -9,9 +12,6 @@ import { SkillList } from '@/features/home/components/SkillList'
 import { Environment } from '@/types/environments'
 import { Portfolio } from '@/types/portfolio'
 import { Skill } from '@/types/skill'
-import { portfolios } from '@/data/portfolios'
-import { skills } from '@/data/skills'
-import { environments } from '@/data/environments'
 
 type IndexProps = {
   portfolios: Portfolio[]
