@@ -1,5 +1,3 @@
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LaunchIcon from '@mui/icons-material/Launch'
 import {
   Box,
   Card,
@@ -9,8 +7,6 @@ import {
   Typography,
 } from '@mui/material'
 import Link from 'next/link'
-import { PortfolioLink } from './PortfolioLink'
-import { FlexLayout } from '@/components/layouts/common/FlexContainer'
 import { TagList } from '@/components/utility/TagList'
 import { Portfolio } from '@/types/portfolio'
 
@@ -19,13 +15,11 @@ export const PortfolioCard = ({
   name,
   thumbnail,
   description,
-  demoUrl,
-  githubUrl,
   tags,
 }: Portfolio) => {
   return (
     <Grid item xs={12} sm={6} md={4} key={id}>
-      <Link href={`/portfolios/${id}`}>
+      <Link href={`/portfolios/${id}`} passHref>
         <Card
           sx={{
             transition: 'transform 0.3s ease-in-out',
@@ -49,18 +43,6 @@ export const PortfolioCard = ({
             </Box>
             <Box sx={{ marginTop: 4 }}>
               <TagList tags={tags} />
-            </Box>
-            <Box sx={{ marginTop: 2 }}>
-              <FlexLayout justifyContent="space-between">
-                <PortfolioLink href={demoUrl} color="primary">
-                  <LaunchIcon sx={{ marginRight: 1 }} />
-                  <Typography>デモ</Typography>
-                </PortfolioLink>
-                <PortfolioLink href={githubUrl} color="inherit">
-                  <GitHubIcon sx={{ marginRight: 1 }} />
-                  <Typography>Github</Typography>
-                </PortfolioLink>
-              </FlexLayout>
             </Box>
           </CardContent>
         </Card>

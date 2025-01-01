@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import { Tag } from './Tag'
 
 type TagListProps = {
   tags: string[]
 }
 
-export const TagList = ({ tags }: TagListProps) => {
+export const TagList = memo(({ tags }: TagListProps) => {
   return (
     <>
       {tags.map((tag, index) => (
@@ -12,4 +13,4 @@ export const TagList = ({ tags }: TagListProps) => {
       ))}
     </>
   )
-}
+})

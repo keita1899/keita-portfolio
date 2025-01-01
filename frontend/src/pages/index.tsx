@@ -1,5 +1,8 @@
 import { Box, Container } from '@mui/material'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { environments } from '@/data/environments'
+import { portfolios } from '@/data/portfolios'
+import { skills } from '@/data/skills'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
 import { EnvironmentList } from '@/features/home/components/EnvrionmentList'
@@ -73,144 +76,6 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
 }
 
 export const getStaticProps = async () => {
-  const portfolios = [
-    {
-      id: 1,
-      name: 'Project 1',
-      thumbnail: '/images/project1-thumbnail.jpg',
-      description: 'This is a description of Project 1.',
-      demoUrl: 'https://project1-demo.com',
-      githubUrl: 'https://github.com/user/project1',
-      tags: ['React', 'Next.js', 'Node.js'],
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      thumbnail: '/images/project2-thumbnail.jpg',
-      description: 'This is a description of Project 2.',
-      demoUrl: 'https://project2-demo.com',
-      githubUrl: 'https://github.com/user/project2',
-      tags: ['Rails', 'PostgreSQL', 'Docker'],
-    },
-    {
-      id: 3,
-      name: 'Project 3',
-      thumbnail: '/images/project3-thumbnail.jpg',
-      description: 'This is a description of Project 3.',
-      demoUrl: 'https://project3-demo.com',
-      githubUrl: 'https://github.com/user/project3',
-      tags: ['Vue.js', 'CSS', 'API'],
-    },
-    {
-      id: 4,
-      name: 'Project 4',
-      thumbnail: '/images/project4-thumbnail.jpg',
-      description: 'This is a description of Project 4.',
-      demoUrl: 'https://project4-demo.com',
-      githubUrl: 'https://github.com/user/project4',
-      tags: ['Angular', 'TypeScript', 'Firebase'],
-    },
-    {
-      id: 5,
-      name: 'Project 5',
-      thumbnail: '/images/project5-thumbnail.jpg',
-      description: 'This is a description of Project 5.',
-      demoUrl: 'https://project5-demo.com',
-      githubUrl: 'https://github.com/user/project5',
-      tags: ['Next.js', 'GraphQL', 'AWS'],
-    },
-    {
-      id: 6,
-      name: 'Project 6',
-      thumbnail: '/images/project6-thumbnail.jpg',
-      description: 'This is a description of Project 6.',
-      demoUrl: 'https://project6-demo.com',
-      githubUrl: 'https://github.com/user/project6',
-      tags: ['Svelte', 'API', 'WebSocket'],
-    },
-  ]
-
-  const skills = [
-    {
-      id: 1,
-      name: 'Ruby',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg',
-    },
-    {
-      id: 2,
-      name: 'Rails',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain.svg',
-    },
-    {
-      id: 3,
-      name: 'PostgreSQL',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
-    },
-    {
-      id: 4,
-      name: 'React',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
-    },
-    {
-      id: 5,
-      name: 'Next.js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
-    },
-    {
-      id: 6,
-      name: 'TypeScript',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
-    },
-    {
-      id: 7,
-      name: 'Github',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
-    },
-    {
-      id: 8,
-      name: 'Github Actions',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
-    },
-    {
-      id: 9,
-      name: 'Docker',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
-    },
-    {
-      id: 10,
-      name: 'AWS',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
-    },
-    {
-      id: 11,
-      name: 'Terraform',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg',
-    },
-  ]
-
-  const environments = [
-    {
-      id: 1,
-      label: 'OS',
-      name: 'MacOS',
-    },
-    {
-      id: 2,
-      label: 'エディタ',
-      name: 'VSCode Cursor',
-    },
-    {
-      id: 3,
-      label: 'コマンドライン',
-      name: 'Warp',
-    },
-    {
-      id: 4,
-      label: 'ブラウザ',
-      name: 'Google Chrome Arc',
-    },
-  ]
-
   return {
     props: {
       portfolios,
