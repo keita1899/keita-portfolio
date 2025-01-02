@@ -1,13 +1,13 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Typography,
 } from '@mui/material'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { Skill } from '@/types/skill'
 import Image from 'next/image'
 import { FlexLayout } from '@/components/layouts/common/FlexContainer'
+import { Skill } from '@/types/skill'
 
 type SkillAccordionProps = {
   skills: Skill[]

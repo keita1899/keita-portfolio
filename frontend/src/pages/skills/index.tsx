@@ -1,8 +1,8 @@
+import { Box, Container, Typography } from '@mui/material'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
 import { skills } from '@/data/skills'
 import { SkillAccordion } from '@/features/skill/components/SkillAccordion'
 import { Skill } from '@/types/skill'
-import { Box, Container, Typography } from '@mui/material'
 
 type SkillIndexProps = {
   skills: Skill[]
