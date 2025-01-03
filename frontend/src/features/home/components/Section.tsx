@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import { ReactNode } from 'react'
 import { SectionDescription } from './SectionDescription'
 import { SectionTitle } from './SectionTitle'
-import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 
 type SectionProps = {
   title: string

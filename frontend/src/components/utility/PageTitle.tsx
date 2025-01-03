@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import { TextAlignLayout } from '../layouts/common/TextAlignContainer'
+import { TextAlignLayout } from '../layouts/common/TextAlignLayout'
 
 type PageTitleProps = {
   title: string

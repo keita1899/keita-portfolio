@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useState } from 'react'
-import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { TagList } from '@/components/utility/TagList'
 import { portfolios } from '@/data/portfolios'
 import { DemoLink } from '@/features/common/components/DemoLink'
@@ -31,7 +31,7 @@ type PortfolioDetailProps = {
 
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
-    portfolio.thumbnail,
+    portfolio.thumbnail
   )
 
   const handleImageClick = (imageUrl: string) => {
