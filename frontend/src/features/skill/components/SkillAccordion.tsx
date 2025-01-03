@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@mui/material'
 import Image from 'next/image'
-import { FlexLayout } from '@/components/layouts/common/FlexContainer'
+import { FlexLayout } from '@/components/layouts/common/FlexLayout'
 import { Skill } from '@/types/skill'
 
 type SkillAccordionProps = {
