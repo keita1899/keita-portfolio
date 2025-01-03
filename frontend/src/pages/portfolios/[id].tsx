@@ -39,7 +39,7 @@ const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   }
   return (
     <Container maxWidth="md" sx={{ paddingY: 10 }}>
-      <TextAlignLayout align="left">
+      <TextAlignLayout>
         <Typography variant="h3">{portfolio.name}</Typography>
       </TextAlignLayout>
       <Box sx={{ marginTop: 4 }}>
