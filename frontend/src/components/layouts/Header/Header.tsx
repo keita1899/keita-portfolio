@@ -17,7 +17,7 @@ export const Header = ({ username, avatar }: HeaderProps) => {
         }}
       >
         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-          <UserAvatar username={username} url={avatar} />
+          <UserAvatar url={avatar} alt={username} width={40} height={40} />
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
             {username}
           </Typography>
