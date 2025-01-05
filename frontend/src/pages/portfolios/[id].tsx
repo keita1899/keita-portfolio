@@ -31,7 +31,7 @@ type PortfolioDetailProps = {
 
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
-    portfolio.thumbnail
+    portfolio.thumbnail,
   )
 
   const handleImageClick = (imageUrl: string) => {
