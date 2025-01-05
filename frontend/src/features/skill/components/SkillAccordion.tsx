@@ -24,7 +24,7 @@ export const SkillAccordion = ({ skills }: SkillAccordionProps) => {
             aria-controls={`panel-${skill.id}-content`}
             id={`panel-${skill.id}-header`}
           >
-            <FlexLayout>
+            <FlexLayout alignItems="center">
               <Image src={skill.logo} alt={skill.name} width={30} height={30} />
               <Typography component="span" sx={{ marginLeft: 2 }}>
                 {skill.name}
