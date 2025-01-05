@@ -8,7 +8,7 @@ type GithubLinkProps = {
 
 export const GithubLink = ({ url }: GithubLinkProps) => {
   return (
-    <PortfolioLink href={url} color="inherit">
+    <PortfolioLink href={url} backgroundColor="#0e0c0d" color="#fff">
       <GitHubIcon sx={{ marginRight: 1 }} />
       <Typography>Github</Typography>
     </PortfolioLink>

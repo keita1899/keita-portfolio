@@ -3,31 +3,41 @@ import { ReactNode } from 'react'
 
 type PortfolioLinkProps = {
   href: string
-  color:
-    | 'inherit'
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'error'
-    | 'info'
-    | 'warning'
+  backgroundColor?: string
+  hoverBackgroundColor?: string
+  borderColor?: string
+  hoverBorderColor?: string
+  color?: string
+  hoverColor?: string
   children: ReactNode
 }
 
 export const PortfolioLink = ({
   href,
+  backgroundColor,
+  hoverBackgroundColor,
+  borderColor,
+  hoverBorderColor,
   color,
+  hoverColor,
   children,
 }: PortfolioLinkProps) => {
   return (
     <Button
-      variant="outlined"
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      color={color}
+      fullWidth
       sx={{
         textTransform: 'none',
+        backgroundColor: backgroundColor,
+        border: `1px solid ${borderColor || 'transparent'}`,
+        color: color,
+        '&:hover': {
+          backgroundColor: hoverBackgroundColor || backgroundColor,
+          border: `1px solid ${hoverBorderColor || borderColor || 'transparent'}`,
+          color: hoverColor || color,
+        },
       }}
     >
       {children}
