@@ -1,5 +1,5 @@
 import { Box, Container } from '@mui/material'
-import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { environments } from '@/data/environments'
 import { portfolios } from '@/data/portfolios'
 import { skills } from '@/data/skills'

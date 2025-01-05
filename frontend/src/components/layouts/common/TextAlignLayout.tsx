@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 type TextAlignLayoutProps = {
   children: ReactNode
-  align: 'center' | 'left' | 'right'
+  align?: 'center' | 'left' | 'right'
 } & BoxProps
 
 export const TextAlignLayout = ({

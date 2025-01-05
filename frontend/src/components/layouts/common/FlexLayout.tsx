@@ -1,23 +1,29 @@
 import { Box, BoxProps } from '@mui/material'
 import { ReactNode } from 'react'
 
+type ResponsiveValue<T> = T | { [key: string]: T }
+
 type FlexLayoutProps = {
   children: ReactNode
-  justifyContent?:
+  justifyContent?: ResponsiveValue<
+    | 'normal'
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'space-between'
     | 'space-around'
     | 'space-evenly'
-  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
-  direction?: 'row' | 'column'
+  >
+  alignItems?: ResponsiveValue<
+    'normal' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+  >
+  direction?: ResponsiveValue<'row' | 'column'>
 } & BoxProps
 
 export const FlexLayout = ({
   children,
-  justifyContent = 'center',
-  alignItems = 'center',
+  justifyContent = 'normal',
+  alignItems = 'normal',
   direction = 'row',
   ...props
 }: FlexLayoutProps) => {

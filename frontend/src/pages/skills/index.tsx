@@ -1,5 +1,5 @@
-import { Box, Container, Typography } from '@mui/material'
-import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { Box, Container } from '@mui/material'
+import { PageTitle } from '@/components/utility/PageTitle'
 import { skills } from '@/data/skills'
 import { SkillAccordion } from '@/features/skill/components/SkillAccordion'
 import { Skill } from '@/types/skill'
@@ -12,9 +12,7 @@ const SkillIndex = ({ skills }: SkillIndexProps) => {
   return (
     <>
       <Container maxWidth="sm" sx={{ paddingY: 10 }}>
-        <TextAlignLayout align="center">
-          <Typography variant="h3">Skill</Typography>
-        </TextAlignLayout>
+        <PageTitle title="Skill" />
         <Box sx={{ marginTop: 4 }}>
           <SkillAccordion skills={skills} />
         </Box>

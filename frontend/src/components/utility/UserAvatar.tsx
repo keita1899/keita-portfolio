@@ -3,19 +3,15 @@ import Image from 'next/image'
 
 type AvatarProps = {
   url: string
-  username: string
+  alt: string
+  width: number
+  height: number
 }
 
-export const UserAvatar = ({ url, username }: AvatarProps) => {
+export const UserAvatar = ({ url, alt, width, height }: AvatarProps) => {
   return (
     <Avatar>
-      <Image
-        src={url}
-        alt={username}
-        style={{ width: '40px', height: '40px' }}
-        width={40}
-        height={40}
-      />
+      <Image src={url} alt={alt} width={width} height={height} />
     </Avatar>
   )
 }

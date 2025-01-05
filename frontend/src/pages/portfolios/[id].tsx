@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useState } from 'react'
-import { TextAlignLayout } from '@/components/layouts/common/TextAlignContainer'
+import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { TagList } from '@/components/utility/TagList'
 import { portfolios } from '@/data/portfolios'
 import { DemoLink } from '@/features/common/components/DemoLink'
@@ -39,7 +39,7 @@ const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   }
   return (
     <Container maxWidth="md" sx={{ paddingY: 10 }}>
-      <TextAlignLayout align="left">
+      <TextAlignLayout>
         <Typography variant="h3">{portfolio.name}</Typography>
       </TextAlignLayout>
       <Box sx={{ marginTop: 4 }}>
