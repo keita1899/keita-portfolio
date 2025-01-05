@@ -1,8 +1,8 @@
 import { Box, Container } from '@mui/material'
+import { PageTitle } from '@/components/utility/PageTitle'
 import { skills } from '@/data/skills'
 import { SkillAccordion } from '@/features/skill/components/SkillAccordion'
 import { Skill } from '@/types/skill'
-import { PageTitle } from '@/components/utility/PageTitle'
 
 type SkillIndexProps = {
   skills: Skill[]

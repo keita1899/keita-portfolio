@@ -1,8 +1,8 @@
 import { Box, Container } from '@mui/material'
+import { PageTitle } from '@/components/utility/PageTitle'
 import { portfolios } from '@/data/portfolios'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { Portfolio } from '@/types/portfolio'
-import { PageTitle } from '@/components/utility/PageTitle'
 
 type PortfolioIndexProps = {
   portfolios: Portfolio[]
