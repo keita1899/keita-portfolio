@@ -5,11 +5,11 @@ import { ProfileList } from './ProfileList'
 import { FlexLayout } from '@/components/layouts/common/FlexLayout'
 import { Profile } from '@/types/profile'
 
-type ProfileProps = {
+type ProfileInfoProps = {
   profile: Profile
 }
 
-export const ProfileInfo = ({ profile }: ProfileProps) => {
+export const ProfileInfo = ({ profile }: ProfileInfoProps) => {
   return (
     <>
       <FlexLayout
@@ -17,12 +17,7 @@ export const ProfileInfo = ({ profile }: ProfileProps) => {
         alignItems="center"
         direction={{ xs: 'column', md: 'row' }}
       >
-        <Image
-          src="/images/avatar.png"
-          alt="アバター"
-          width={200}
-          height={200}
-        />
+        <Image src={profile.avatar} alt="アバター" width={200} height={200} />
         <ProfileList profile={profile} />
       </FlexLayout>
       <Typography sx={{ marginTop: 4 }}>{profile.description}</Typography>

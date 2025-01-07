@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material'
 import { FlexLayout } from '@/components/layouts/common/FlexLayout'
+import { FormatDate } from '@/components/utility/FormatDate'
 import { Profile } from '@/types/profile'
 
 type ProfileListProps = {
@@ -22,7 +23,9 @@ export const ProfileList = ({ profile }: ProfileListProps) => {
         <Typography sx={{ width: 100, fontWeight: 'bold' }}>
           生年月日
         </Typography>
-        <Typography>{profile.birthday}</Typography>
+        <Typography>
+          <FormatDate date={profile.birthday} formatString="yyyy/MM/dd" />
+        </Typography>
       </FlexLayout>
       <FlexLayout justifyContent="flex-start" marginTop={1}>
         <Typography sx={{ width: 100, fontWeight: 'bold' }}>年齢</Typography>

@@ -1,5 +1,6 @@
 export type Profile = {
   id: number
+  userId: number
   firstName: string
   lastName: string
   age: number
@@ -11,4 +12,6 @@ export type Profile = {
   blogUrl: string
   xUrl: string
   qiitaUrl: string
+  createdAt: string
+  updatedAt: string
 }
