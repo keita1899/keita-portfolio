@@ -17,7 +17,15 @@ export const ProfileInfo = ({ profile }: ProfileInfoProps) => {
         alignItems="center"
         direction={{ xs: 'column', md: 'row' }}
       >
-        <Image src={profile.avatar} alt="アバター" width={200} height={200} />
+        <Image
+          src={profile.avatar}
+          alt={`${profile.firstName} ${profile.lastName}のアバター`}
+          width={200}
+          height={200}
+          onError={(e) => {
+            e.currentTarget.src = '/images/default-avatar.png'
+          }}
+        />
         <ProfileList profile={profile} />
       </FlexLayout>
       <Typography sx={{ marginTop: 4 }}>{profile.description}</Typography>
