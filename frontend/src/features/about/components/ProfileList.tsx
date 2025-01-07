@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import { FlexLayout } from '@/components/layouts/common/FlexLayout'
-import { Profile } from '@/types/profile'
 import { FormatDate } from '@/components/utility/FormatDate'
+import { Profile } from '@/types/profile'
 
 type ProfileListProps = {
   profile: Pick<
