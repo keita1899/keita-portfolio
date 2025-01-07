@@ -45,16 +45,24 @@ const About = ({ profile, careers, certifications, hobbies }: AboutProps) => {
 }
 
 export const getStaticProps = async () => {
-  const profileRes = await axios.get('http://backend:3000/api/profile')
-  const profile = camelcaseKeys(profileRes.data)
+  try {
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
+    const profileRes = await axios.get(`${backendUrl}/api/profile`)
+    const profile = camelcaseKeys(profileRes.data) as Profile
 
-  return {
-    props: {
-      profile,
-      careers,
-      certifications,
-      hobbies,
-    },
+    return {
+      props: {
+        profile,
+        careers,
+        certifications,
+        hobbies,
+      },
+    }
+  } catch (error) {
+    console.error('Failed to fetch profile:', error)
+    return {
+      notFound: true,
+    }
   }
 }
 export default About
