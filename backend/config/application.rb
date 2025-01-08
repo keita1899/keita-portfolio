@@ -39,7 +39,5 @@ module Myapp
     config.time_zone = "Asia/Tokyo"
 
     config.active_record.default_timezone = :local
-
-    config.hosts << "backend"
   end
 end
