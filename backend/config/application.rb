@@ -40,6 +40,5 @@ module Myapp
 
     config.active_record.default_timezone = :local
 
-    config.hosts << "backend"
   end
 end
