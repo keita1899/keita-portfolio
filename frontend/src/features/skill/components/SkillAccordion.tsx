@@ -25,7 +25,12 @@ export const SkillAccordion = ({ skills }: SkillAccordionProps) => {
             id={`panel-${skill.id}-header`}
           >
             <FlexLayout alignItems="center">
-              <Image src={skill.logo} alt={skill.name} width={30} height={30} />
+              <Image
+                src={skill.logoUrl}
+                alt={skill.name}
+                width={30}
+                height={30}
+              />
               <Typography component="span" sx={{ marginLeft: 2 }}>
                 {skill.name}
               </Typography>
