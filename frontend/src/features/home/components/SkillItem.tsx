@@ -17,7 +17,7 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
           justifyContent: 'center',
         }}
       >
-        <Image src={skill.logo} alt="" width={64} height={64} />
+        <Image src={skill.logoUrl} alt="" width={64} height={64} />
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
           {skill.name}
         </Typography>

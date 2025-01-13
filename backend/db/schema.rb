@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_06_095713) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_10_131144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_abilities_on_skill_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -32,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_06_095713) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "logo_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -39,5 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_06_095713) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "abilities", "skills"
   add_foreign_key "profiles", "users"
+  add_foreign_key "skills", "users"
 end
