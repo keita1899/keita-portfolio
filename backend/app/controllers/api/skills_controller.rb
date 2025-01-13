@@ -15,7 +15,7 @@ class Api::SkillsController < ApplicationController
   private
 
     def find_user
-      User.find_by(email: "test@example.com")
+      User.find_by(email: "test1@example.com")
     end
 
     def find_skills(user)
