@@ -1,6 +1,6 @@
 class Api::ProfileController < ApplicationController
   def show
-    user = User.find_by(email: "test@example.com")
+    user = find_user
     profile = user.profile
 
     if profile
@@ -9,4 +9,10 @@ class Api::ProfileController < ApplicationController
       render json: { error: "Profile not found" }, status: :not_found
     end
   end
+
+  private
+
+    def find_user
+      User.find_by(email: "test1@example.com")
+    end
 end
