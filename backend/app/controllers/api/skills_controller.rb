@@ -1,4 +1,6 @@
 class Api::SkillsController < ApplicationController
+  include UserFindable
+
   def index
     user = find_user
     return render json: { error: "User not found" }, status: :not_found unless user
@@ -13,10 +15,6 @@ class Api::SkillsController < ApplicationController
   end
 
   private
-
-    def find_user
-      User.find_by(email: "test1@example.com")
-    end
 
     def find_skills(user)
       user.skills.includes(:abilities)
