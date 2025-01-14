@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_10_131144) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_14_084717) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,55 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_10_131144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_abilities_on_skill_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_features_on_portfolio_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url", null: false
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_images_on_portfolio_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_pages_on_portfolio_id"
+  end
+
+  create_table "portfolio_tags", force: :cascade do |t|
+    t.bigint "portfolio_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_portfolio_tags_on_portfolio_id"
+    t.index ["tag_id"], name: "index_portfolio_tags_on_tag_id"
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "thumbnail", null: false
+    t.text "commitment", null: false
+    t.text "challenges", null: false
+    t.text "description", null: false
+    t.string "demo_url", null: false
+    t.string "github_url", null: false
+    t.string "blog_url", null: false
+    t.integer "duration", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -49,6 +98,22 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_10_131144) do
     t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "tech_stacks", force: :cascade do |t|
+    t.string "technology", null: false
+    t.string "version", null: false
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_tech_stacks_on_portfolio_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -57,6 +122,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_10_131144) do
   end
 
   add_foreign_key "abilities", "skills"
+  add_foreign_key "features", "portfolios"
+  add_foreign_key "images", "portfolios"
+  add_foreign_key "pages", "portfolios"
+  add_foreign_key "portfolio_tags", "portfolios"
+  add_foreign_key "portfolio_tags", "tags"
+  add_foreign_key "portfolios", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "skills", "users"
+  add_foreign_key "tech_stacks", "portfolios"
 end
