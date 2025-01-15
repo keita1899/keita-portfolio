@@ -1,16 +1,16 @@
 FactoryBot.define do
   factory :profile do
-    user { nil }
-    first_name { "MyString" }
-    last_name { "MyString" }
-    age { 1 }
-    birthday { "2025-01-06" }
-    hometown { "MyString" }
-    description { "MyText" }
-    avatar { "MyString" }
-    github_url { "MyString" }
-    blog_url { "MyString" }
-    x_url { "MyString" }
-    qiita_url { "MyString" }
+    association :user
+    first_name { "慶太" }
+    last_name { "濱崎" }
+    age { 25 }
+    birthday { "1999-02-15" }
+    hometown { "兵庫県" }
+    description { "Webエンジニアを目指して勉強中です。書籍やudemyで学習しています。主に Rails と React・TypeScript でポートフォリオを作成しています。" }
+    avatar { "/images/avatar.png" }
+    github_url { "https://github.com/" }
+    blog_url { "https://keita1899.hatenablog.com/" }
+    x_url { "https://x.com/k1e8i9t9a" }
+    qiita_url { "https://qiita.com/keita1899" }
   end
 end
