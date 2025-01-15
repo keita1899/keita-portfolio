@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Profiles API", type: :request do
-  let!(:user) { User.create!(email: "test1@example.com", password: "password") }
+  let!(:user) { create(:user) }
   let!(:profile) do
     Profile.create!(
       user: user,
