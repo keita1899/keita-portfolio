@@ -12,5 +12,7 @@ class Api::PortfoliosController < ApplicationController
       tech_stacks: { only: [:id, :technology, :version] },
       tags: { only: [:id, :name] },
     }
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "User not found" }, status: :not_found
   end
 end
