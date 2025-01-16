@@ -12,6 +12,7 @@ import { StackTable } from '@/features/portfolioDetail/components/StackTable'
 import { ImageItem } from '@/features/portfolioDetail/types/imageItem'
 import { ListItem } from '@/features/portfolioDetail/types/listItem'
 import { TechStack } from '@/features/portfolioDetail/types/techStack'
+import { Tag } from '@/types/tag'
 
 type PortfolioDetailProps = {
   portfolio: {
@@ -25,7 +26,7 @@ type PortfolioDetailProps = {
     techStack: TechStack[]
     features: ListItem[]
     pages: ListItem[]
-    tags: string[]
+    tags: Tag[]
   }
 }
 
