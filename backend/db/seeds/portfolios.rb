@@ -99,7 +99,7 @@ portfolios = [
 ]
 
 def create_portfolio(portfolio)
-  portfolio_record = Portfolio.create!(
+  portfolio_record = Portfolio.find_or_create_by!(
     user_id: portfolio[:user_id],
     name: portfolio[:name],
     thumbnail: portfolio[:thumbnail],
@@ -121,34 +121,32 @@ end
 
 def create_images(portfolio, images)
   images.each do |image_url|
-    Image.create!(portfolio_id: portfolio.id, url: image_url)
+    Image.find_or_create_by!(portfolio_id: portfolio.id, url: image_url)
   end
 end
 
 def create_tech_stacks(portfolio, tech_stacks)
   tech_stacks.each do |tech_stack|
-    TechStack.create!(portfolio_id: portfolio.id, technology: tech_stack[:technology], version: tech_stack[:version])
+    TechStack.find_or_create_by!(portfolio_id: portfolio.id, technology: tech_stack[:technology], version: tech_stack[:version])
   end
 end
 
 def create_features(portfolio, features)
   features.each do |feature_name|
-    Feature.create!(portfolio_id: portfolio.id, name: feature_name)
+    Feature.find_or_create_by!(portfolio_id: portfolio.id, name: feature_name)
   end
 end
 
 def create_pages(portfolio, pages)
   pages.each do |page_name|
-    Page.create!(portfolio_id: portfolio.id, name: page_name)
+    Page.find_or_create_by!(portfolio_id: portfolio.id, name: page_name)
   end
 end
 
 def create_tags(portfolio, tags)
   tags.each do |tag_name|
-    tag = Tag.find_by(name: tag_name)
-    if tag
-      PortfolioTag.create!(portfolio_id: portfolio.id, tag_id: tag.id)
-    end
+    tag = Tag.find_or_create_by!(name: tag_name)
+    PortfolioTag.find_or_create_by!(portfolio_id: portfolio.id, tag_id: tag.id)
   end
 end
 

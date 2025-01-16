@@ -39,5 +39,5 @@ tags = [
 ]
 
 tags.each do |tag_name|
-  Tag.create!(name: tag_name)
+  Tag.find_or_create_by!(name: tag_name)
 end

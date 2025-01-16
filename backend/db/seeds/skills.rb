@@ -136,13 +136,13 @@ skills_with_abilities = [
 ]
 
 skills_with_abilities.each do |skill_data|
-  skill = Skill.create!(
+  skill = Skill.find_or_create_by!(
     user: User.find_by(email: "keita@example.com"),
     name: skill_data[:name],
     logo_url: skill_data[:logo_url],
   )
 
   skill_data[:abilities].each do |ability_content|
-    Ability.create!(skill_id: skill.id, content: ability_content)
+    Ability.find_or_create_by!(skill_id: skill.id, content: ability_content)
   end
 end

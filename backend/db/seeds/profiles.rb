@@ -1,4 +1,4 @@
-Profile.create!(
+Profile.find_or_create_by!(
   user: User.find_by(email: "keita@example.com"),
   first_name: "慶太",
   last_name: "濱崎",
