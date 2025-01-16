@@ -1,7 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Api::Skills", type: :request do
-  let!(:user) { create(:user, email: "test1@example.com", password: "password") }
+  let!(:user) {
+    User.find_or_create_by(email: "keita@example.com") do |user|
+      user.password = "password"
+    end
+  }
   let!(:skills) { create_list(:skill, 5, user: user) }
   let!(:abilities) do
     skills.each do |skill|

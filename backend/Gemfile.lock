@@ -239,6 +239,7 @@ DEPENDENCIES
   config
   debug
   factory_bot_rails
+  faker
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors

@@ -1,6 +1,7 @@
 import { Box, Container } from '@mui/material'
+import axios from 'axios'
+import camelcaseKeys from 'camelcase-keys'
 import { PageTitle } from '@/components/utility/PageTitle'
-import { portfolios } from '@/data/portfolios'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { Portfolio } from '@/types/portfolio'
 
@@ -10,22 +11,31 @@ type PortfolioIndexProps = {
 
 const PortfolioIndex = ({ portfolios }: PortfolioIndexProps) => {
   return (
-    <>
-      <Container sx={{ paddingY: 10 }}>
-        <PageTitle title="Portfolio" />
-        <Box sx={{ marginTop: 4 }}>
-          <PortfolioCardList portfolios={portfolios} />
-        </Box>
-      </Container>
-    </>
+    <Container sx={{ paddingY: 10 }}>
+      <PageTitle title="Portfolio" />
+      <Box sx={{ marginTop: 4 }}>
+        <PortfolioCardList portfolios={portfolios} />
+      </Box>
+    </Container>
   )
 }
 
 export const getStaticProps = async () => {
-  return {
-    props: {
-      portfolios,
-    },
+  try {
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
+    const portfoliosRes = await axios.get(`${backendUrl}/api/portfolios`)
+    const portfolios = camelcaseKeys(portfoliosRes.data) as Portfolio[]
+
+    return {
+      props: {
+        portfolios,
+      },
+    }
+  } catch (error) {
+    console.error('Failed to fetch portfolios:', error)
+    return {
+      notFound: true,
+    }
   }
 }
 
