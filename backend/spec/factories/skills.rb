@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :skill do
-    user
+    association :user
     name { "Ruby" }
-    logo_url { "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg" }
+    logo_url { Faker::Internet.url }
   end
 end
