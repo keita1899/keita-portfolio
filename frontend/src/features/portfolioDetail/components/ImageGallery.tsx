@@ -1,11 +1,11 @@
 import { Box, Grid } from '@mui/material'
 import Image from 'next/image'
-import { ImageItem } from '../types/imageItem'
 import { ImageGalleryItem } from './ImageGalleryItem'
+import { Image as ImageType } from '@/types/image'
 
 type ImageGalleryProps = {
   thumbnail: string
-  items: ImageItem[]
+  items: ImageType[]
   onClick: (imageUrl: string) => void
 }
 
