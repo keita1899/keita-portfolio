@@ -39,7 +39,7 @@ export const portfolios = [
         alt: 'Project 1 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'React', version: '17.0.2' },
       { id: 2, technology: 'Node.js', version: '14.17.0' },
       { id: 3, technology: 'Next.js', version: '10.0.0' },
@@ -85,7 +85,7 @@ export const portfolios = [
         alt: 'Project 2 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'Rails', version: '6.1.0' },
       { id: 2, technology: 'PostgreSQL', version: '13.3' },
       { id: 3, technology: 'Docker', version: '20.10.7' },
@@ -130,7 +130,7 @@ export const portfolios = [
         alt: 'Project 3 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'Vue.js', version: '3.0.0' },
       { id: 2, technology: 'CSS', version: '3.0' },
       { id: 3, technology: 'API', version: 'v2' },
@@ -176,7 +176,7 @@ export const portfolios = [
         alt: 'Project 4 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'Angular', version: '11.0.0' },
       { id: 2, technology: 'TypeScript', version: '4.2.3' },
       { id: 3, technology: 'Firebase', version: '9.0.0' },
@@ -222,7 +222,7 @@ export const portfolios = [
         alt: 'Project 5 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'Next.js', version: '10.1.0' },
       { id: 2, technology: 'GraphQL', version: '15.6.0' },
       { id: 3, technology: 'AWS', version: 'v3' },
@@ -267,7 +267,7 @@ export const portfolios = [
         alt: 'Project 6 Image 4',
       },
     ],
-    techStack: [
+    techStacks: [
       { id: 1, technology: 'Svelte', version: '3.38.0' },
       { id: 2, technology: 'API', version: 'v1' },
       { id: 3, technology: 'WebSocket', version: '1.0' },
