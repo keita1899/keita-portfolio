@@ -95,7 +95,7 @@ RSpec.describe "Api::PortfoliosController", type: :request do
         it "returns status 200 and the portfolio data" do
           get "/api/portfolios/#{portfolio.id}"
           expect(response).to have_http_status(:ok)
-          
+
           json_response = JSON.parse(response.body)
           expect(json_response["id"]).to eq(portfolio.id)
           expect(json_response["name"]).to eq(portfolio.name)
