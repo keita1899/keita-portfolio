@@ -1,7 +1,7 @@
+import { Box } from '@mui/material'
 import { memo } from 'react'
 import { Tag } from './Tag'
 import { Tag as TagType } from '@/types/tag'
-import { Box } from '@mui/material'
 
 type TagListProps = {
   tags: TagType[]

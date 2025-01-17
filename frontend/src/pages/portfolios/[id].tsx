@@ -5,14 +5,14 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useState } from 'react'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { TagList } from '@/components/utility/TagList'
+import { BlogLink } from '@/features/common/components/BlogLink'
 import { DemoLink } from '@/features/common/components/DemoLink'
 import { GithubLink } from '@/features/common/components/GithubLink'
 import { ImageGallery } from '@/features/portfolioDetail/components/ImageGallery'
 import { List } from '@/features/portfolioDetail/components/List'
+import { Section } from '@/features/portfolioDetail/components/Section'
 import { StackTable } from '@/features/portfolioDetail/components/StackTable'
 import { Portfolio } from '@/types/portfolio'
-import { Section } from '@/features/portfolioDetail/components/Section'
-import { BlogLink } from '@/features/common/components/BlogLink'
 
 type PortfolioDetailProps = {
   portfolio: Portfolio
@@ -20,7 +20,7 @@ type PortfolioDetailProps = {
 
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
-    portfolio.thumbnail
+    portfolio.thumbnail,
   )
 
   const handleImageClick = (imageUrl: string) => {
