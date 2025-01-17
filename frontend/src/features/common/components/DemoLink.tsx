@@ -8,7 +8,7 @@ type DemoLinkProps = {
 
 export const DemoLink = ({ url }: DemoLinkProps) => {
   return (
-    <PortfolioLink href={url} color="primary" borderColor="primary">
+    <PortfolioLink href={url} color="#fff" backgroundColor="#2196f3">
       <LaunchIcon sx={{ marginRight: 1 }} />
       <Typography>デモ</Typography>
     </PortfolioLink>
