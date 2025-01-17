@@ -41,7 +41,17 @@ const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
       <Section title="説明">
         <Typography>{portfolio.description}</Typography>
       </Section>
-      <Box sx={{ marginTop: 4, display: 'flex', gap: 2 }}>
+      <Box
+        sx={{
+          marginTop: 4,
+          display: 'flex',
+          gap: 2,
+          flexDirection: {
+            xs: 'column',
+            sm: 'row',
+          },
+        }}
+      >
         <DemoLink url={portfolio.demoUrl} />
         <GithubLink url={portfolio.githubUrl} />
         <BlogLink url={portfolio.blogUrl} />
