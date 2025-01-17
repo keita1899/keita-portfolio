@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { memo } from 'react'
 import { Tag } from './Tag'
 import { Tag as TagType } from '@/types/tag'
@@ -10,10 +11,16 @@ type TagListProps = {
 export const TagList = memo(({ tags, maxTags }: TagListProps) => {
   const tagsToDisplay = maxTags ? tags.slice(0, maxTags) : tags
   return (
-    <>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 1,
+      }}
+    >
       {tagsToDisplay.map((tag, index) => (
         <Tag key={index} tag={tag} />
       ))}
-    </>
+    </Box>
   )
 })
