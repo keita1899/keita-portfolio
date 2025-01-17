@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     get "profile", to: "profile#show"
     get "skills", to: "skills#index"
     get "portfolios", to: "portfolios#index"
+    get "portfolios/:id", to: "portfolios#show"
   end
 end

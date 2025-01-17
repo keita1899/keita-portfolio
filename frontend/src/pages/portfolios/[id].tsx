@@ -1,38 +1,26 @@
 import { Box, Container, Typography } from '@mui/material'
+import axios from 'axios'
+import camelcaseKeys from 'camelcase-keys'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useState } from 'react'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { TagList } from '@/components/utility/TagList'
-import { portfolios } from '@/data/portfolios'
 import { DemoLink } from '@/features/common/components/DemoLink'
 import { GithubLink } from '@/features/common/components/GithubLink'
 import { ImageGallery } from '@/features/portfolioDetail/components/ImageGallery'
 import { List } from '@/features/portfolioDetail/components/List'
 import { StackTable } from '@/features/portfolioDetail/components/StackTable'
-import { ImageItem } from '@/features/portfolioDetail/types/imageItem'
-import { ListItem } from '@/features/portfolioDetail/types/listItem'
-import { TechStack } from '@/features/portfolioDetail/types/techStack'
-import { Tag } from '@/types/tag'
+import { Portfolio } from '@/types/portfolio'
+import { Section } from '@/features/portfolioDetail/components/Section'
+import { BlogLink } from '@/features/common/components/BlogLink'
 
 type PortfolioDetailProps = {
-  portfolio: {
-    id: number
-    name: string
-    thumbnail: string
-    description: string
-    demoUrl: string
-    githubUrl: string
-    images: ImageItem[]
-    techStack: TechStack[]
-    features: ListItem[]
-    pages: ListItem[]
-    tags: Tag[]
-  }
+  portfolio: Portfolio
 }
 
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
-    portfolio.thumbnail,
+    portfolio.thumbnail
   )
 
   const handleImageClick = (imageUrl: string) => {
@@ -50,33 +38,44 @@ const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
           onClick={handleImageClick}
         />
       </Box>
-      <Box sx={{ marginTop: 4 }}>
+      <Section title="説明">
         <Typography>{portfolio.description}</Typography>
-      </Box>
+      </Section>
       <Box sx={{ marginTop: 4, display: 'flex', gap: 2 }}>
         <DemoLink url={portfolio.demoUrl} />
         <GithubLink url={portfolio.githubUrl} />
+        <BlogLink url={portfolio.blogUrl} />
       </Box>
-      <Box sx={{ marginTop: 2 }}>
+      <Box sx={{ marginTop: 4 }}>
         <TagList tags={portfolio.tags} />
       </Box>
-      <Box sx={{ marginTop: 8 }}>
-        <Typography variant="h4">使用技術</Typography>
-        <StackTable stacks={portfolio.techStack} />
-      </Box>
-      <Box sx={{ marginTop: 6 }}>
-        <Typography variant="h4">機能一覧</Typography>
+      <Section title="制作期間">
+        <Typography>約{portfolio.duration}日</Typography>
+      </Section>
+      <Section title="使用技術">
+        <StackTable stacks={portfolio.techStacks} />
+      </Section>
+      <Section title="機能一覧">
         <List items={portfolio.features} />
-      </Box>
-      <Box sx={{ marginTop: 6 }}>
-        <Typography variant="h4">ページ一覧</Typography>
+      </Section>
+      <Section title="ページ一覧">
         <List items={portfolio.pages} />
-      </Box>
+      </Section>
+      <Section title="こだわった点">
+        <Typography>{portfolio.commitment}</Typography>
+      </Section>
+      <Section title="苦労した点">
+        <Typography>{portfolio.challenges}</Typography>
+      </Section>
     </Container>
   )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
+  const portfoliosRes = await axios.get(`${backendUrl}/api/portfolios`)
+  const portfolios = camelcaseKeys(portfoliosRes.data) as Portfolio[]
+
   const paths = portfolios.map((portfolio) => ({
     params: { id: portfolio.id.toString() },
   }))
@@ -87,7 +86,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params!
 
-  const portfolio = portfolios.find((p) => p.id.toString() === id)
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
+  const portfolioRes = await axios.get(`${backendUrl}/api/portfolios/${id}`)
+  const portfolio = camelcaseKeys(portfolioRes.data) as Portfolio[]
 
   if (!portfolio) {
     return { notFound: true }
@@ -97,7 +98,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       portfolio,
     },
-    revalidate: 60,
   }
 }
 
