@@ -30,7 +30,7 @@ jobs:
           timeout: 300
 
   deploy-next:
-    needs: [ci]
+    needs: [deploy-rails]
     runs-on: ubuntu-latest
     environment: production
 
