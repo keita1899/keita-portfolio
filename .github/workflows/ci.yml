@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - feature/*
-    branches-ignore:
-      - main
   pull_request:
     branches:
       - main
