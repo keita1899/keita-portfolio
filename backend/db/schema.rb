@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_14_123124) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_18_145107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,12 +22,41 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_123124) do
     t.index ["skill_id"], name: "index_abilities_on_skill_id"
   end
 
+  create_table "careers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "organization", null: false
+    t.string "detail", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_careers_on_user_id"
+  end
+
+  create_table "certifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "acquired_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_certifications_on_user_id"
+  end
+
   create_table "features", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "portfolio_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["portfolio_id"], name: "index_features_on_portfolio_id"
+  end
+
+  create_table "hobbies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hobbies_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -123,7 +152,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_123124) do
   end
 
   add_foreign_key "abilities", "skills"
+  add_foreign_key "careers", "users"
+  add_foreign_key "certifications", "users"
   add_foreign_key "features", "portfolios"
+  add_foreign_key "hobbies", "users"
   add_foreign_key "images", "portfolios"
   add_foreign_key "pages", "portfolios"
   add_foreign_key "portfolio_tags", "portfolios"
