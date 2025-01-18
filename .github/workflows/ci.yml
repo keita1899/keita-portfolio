@@ -3,11 +3,13 @@ name: CI
 on:
   push:
     branches:
-      - main
       - feature/*
+    branches-ignore:
+      - main
   pull_request:
     branches:
       - main
+  workflow_call:
 
 jobs:
   rspec:
