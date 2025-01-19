@@ -2,9 +2,6 @@ import { Box, Container } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
 import { PageTitle } from '@/components/utility/PageTitle'
-import { careers } from '@/data/careers'
-import { certifications } from '@/data/certifications'
-import { hobbies } from '@/data/hobbies'
 import { CareerTable } from '@/features/about/components/CareerTable'
 import { CertificationList } from '@/features/about/components/CertificationList'
 import { HobbyList } from '@/features/about/components/HobbyList'
@@ -47,8 +44,11 @@ const About = ({ profile, careers, certifications, hobbies }: AboutProps) => {
 export const getStaticProps = async () => {
   try {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
-    const profileRes = await axios.get(`${backendUrl}/api/profile`)
-    const profile = camelcaseKeys(profileRes.data) as Profile
+    const response = await axios.get(`${backendUrl}/api/about`)
+    const { profile, careers, certifications, hobbies } = camelcaseKeys(
+      response.data,
+      { deep: true }
+    )
 
     return {
       props: {
