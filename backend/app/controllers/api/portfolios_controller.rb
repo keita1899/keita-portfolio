@@ -25,12 +25,6 @@ class Api::PortfoliosController < ApplicationController
 
   private
 
-    def set_user
-      @user = find_user
-    rescue ActiveRecord::RecordNotFound
-      render json: { error: "User not found" }, status: :not_found
-    end
-
     def portfolio_includes
       {
         features: { only: [:id, :name] },

@@ -1,9 +1,10 @@
 class Api::ProfileController < ApplicationController
   include UserFindable
 
+  before_action :set_user
+
   def show
-    user = find_user
-    profile = user.profile
+    profile = @user.profile
 
     if profile
       render json: profile
