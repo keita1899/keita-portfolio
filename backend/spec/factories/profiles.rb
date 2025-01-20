@@ -4,7 +4,7 @@ FactoryBot.define do
     first_name { "慶太" }
     last_name { "濱崎" }
     age { 25 }
-    birthday { "1999-02-15" }
+    birthday { Date.new(1999, 2, 15) }
     hometown { "兵庫県" }
     description { "Webエンジニアを目指して勉強中です。書籍やudemyで学習しています。主に Rails と React・TypeScript でポートフォリオを作成しています。" }
     avatar { "/images/avatar.png" }

@@ -1,11 +1,10 @@
 class Api::SkillsController < ApplicationController
   include UserFindable
 
-  def index
-    user = find_user
-    return render json: { error: "User not found" }, status: :not_found unless user
+  before_action :set_user
 
-    skills = find_skills(user)
+  def index
+    skills = @user.skills.includes(:abilities)
 
     if skills.present?
       render json: skills.as_json(include: :abilities)
@@ -13,10 +12,4 @@ class Api::SkillsController < ApplicationController
       render json: { error: "Skill not found" }, status: :not_found
     end
   end
-
-  private
-
-    def find_skills(user)
-      user.skills.includes(:abilities)
-    end
 end
