@@ -7,8 +7,6 @@ class Api::PortfoliosController < ApplicationController
     portfolios = @user.portfolios.includes(:features, :pages, :images, :tech_stacks, :tags)
 
     render json: portfolios, include: portfolio_includes
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "User not found" }, status: :not_found
   end
 
   def show
@@ -19,8 +17,6 @@ class Api::PortfoliosController < ApplicationController
     else
       render json: portfolio, include: portfolio_includes
     end
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "User not found" }, status: :not_found
   end
 
   private

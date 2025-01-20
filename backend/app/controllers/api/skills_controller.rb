@@ -4,8 +4,6 @@ class Api::SkillsController < ApplicationController
   before_action :set_user
 
   def index
-    return render json: { error: "User not found" }, status: :not_found unless @user
-
     skills = @user.skills.includes(:abilities)
 
     if skills.present?
