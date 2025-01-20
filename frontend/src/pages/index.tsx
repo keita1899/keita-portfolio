@@ -1,8 +1,5 @@
 import { Box, Container } from '@mui/material'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
-import { environments } from '@/data/environments'
-import { portfolios } from '@/data/portfolios'
-import { skills } from '@/data/skills'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
 import { EnvironmentList } from '@/features/home/components/EnvrionmentList'
@@ -12,6 +9,8 @@ import { SkillList } from '@/features/home/components/SkillList'
 import { Environment } from '@/types/environments'
 import { Portfolio } from '@/types/portfolio'
 import { Skill } from '@/types/skill'
+import axios from 'axios'
+import camelcaseKeys from 'camelcase-keys'
 
 type IndexProps = {
   portfolios: Portfolio[]
@@ -76,12 +75,27 @@ const Index = ({ portfolios, skills, environments }: IndexProps) => {
 }
 
 export const getStaticProps = async () => {
-  return {
-    props: {
-      portfolios,
-      skills,
-      environments,
-    },
+  try {
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
+    const response = await axios.get(`${backendUrl}/api`)
+    const { profile, portfolios, skills, environments } = camelcaseKeys(
+      response.data,
+      { deep: true }
+    )
+
+    return {
+      props: {
+        profile,
+        portfolios,
+        skills,
+        environments,
+      },
+    }
+  } catch (error) {
+    console.error('Failed to fetch data:', error)
+    return {
+      notFound: true,
+    }
   }
 }
 
