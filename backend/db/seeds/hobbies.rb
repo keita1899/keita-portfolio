@@ -1,15 +1,15 @@
 hobbies = [
   {
-    name: 'サッカー',
-    description: '小中高とサッカー部でした。海外サッカーを見るのが好きです。',
+    name: "サッカー",
+    description: "小中高とサッカー部でした。海外サッカーを見るのが好きです。",
   },
   {
-    name: '釣り',
-    description: 'ルアーで釣るのが好きです。',
+    name: "釣り",
+    description: "ルアーで釣るのが好きです。",
   },
   {
-    name: 'マリオカート',
-    description: 'たまにオンラインで遊んでます。',
+    name: "マリオカート",
+    description: "たまにオンラインで遊んでます。",
   },
 ]
 
@@ -20,4 +20,3 @@ hobbies.each do |hobby|
     description: hobby[:description],
   )
 end
-
