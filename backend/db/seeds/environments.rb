@@ -1,18 +1,18 @@
-environments = [
+[
   {
-    label: 'OS',
-    name: 'MacOS',
+    label: "OS",
+    name: "MacOS",
   },
   {
-    label: 'エディタ',
-    name: 'VSCode、Cursor',
+    label: "エディタ",
+    name: "VSCode、Cursor",
   },
   {
-    label: 'コマンドライン',
-    name: 'Warp',
+    label: "コマンドライン",
+    name: "Warp",
   },
   {
-    label: 'ブラウザ',
-    name: 'Google Chrome、Arc',
+    label: "ブラウザ",
+    name: "Google Chrome、Arc",
   },
 ]
