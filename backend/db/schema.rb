@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_19_094715) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_20_073830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_19_094715) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_certifications_on_user_id"
+  end
+
+  create_table "environments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "label", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_environments_on_user_id"
   end
 
   create_table "features", force: :cascade do |t|
@@ -154,6 +163,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_19_094715) do
   add_foreign_key "abilities", "skills"
   add_foreign_key "careers", "users"
   add_foreign_key "certifications", "users"
+  add_foreign_key "environments", "users"
   add_foreign_key "features", "portfolios"
   add_foreign_key "hobbies", "users"
   add_foreign_key "images", "portfolios"
