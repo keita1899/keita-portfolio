@@ -97,17 +97,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params!
 
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
-  const portfolioRes = await axios.get(`${backendUrl}/api/portfolios/${id}`)
-  const portfolio = camelcaseKeys(portfolioRes.data) as Portfolio
+  try {
+    const portfolioRes = await axios.get(`${backendUrl}/api/portfolios/${id}`)
+    const portfolio = camelcaseKeys(portfolioRes.data) as Portfolio
 
-  if (!portfolio) {
-    return { notFound: true }
-  }
+    if (!portfolio) {
+      return { notFound: true }
+    }
 
-  return {
-    props: {
-      portfolio,
-    },
+    return {
+      props: {
+        portfolio,
+      },
+    }
+  } catch (error) {
+    console.error('Error fetching portfolio:', error)
+
+    return {
+      notFound: true,
+    }
   }
 }
 
