@@ -47,7 +47,7 @@ export const getStaticProps = async () => {
     const response = await axios.get(`${backendUrl}/api/about`)
     const { profile, careers, certifications, hobbies } = camelcaseKeys(
       response.data,
-      { deep: true }
+      { deep: true },
     )
 
     return {
