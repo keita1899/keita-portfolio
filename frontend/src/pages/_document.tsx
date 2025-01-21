@@ -10,6 +10,7 @@ export default function Document(props: DocumentHeadTagsProps) {
     <Html lang="ja">
       <Head>
         <DocumentHeadTags {...props} />
+        <link rel="icon" href="/images/avatar.png" />
       </Head>
       <body>
         <Main />
