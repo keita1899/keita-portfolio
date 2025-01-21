@@ -12,6 +12,7 @@ import { Environment } from '@/types/environments'
 import { Portfolio } from '@/types/portfolio'
 import { Profile } from '@/types/profile'
 import { Skill } from '@/types/skill'
+import Head from 'next/head'
 
 type IndexProps = {
   profile: Pick<Profile, 'description'>
@@ -25,6 +26,9 @@ const Index = ({ profile, portfolios, skills, environments }: IndexProps) => {
 
   return (
     <>
+      <Head>
+        <title>keita-portfoilo | Home</title>
+      </Head>
       <Section title="About" backgroundColor="#fff">
         <Container maxWidth="xs" sx={{ marginTop: 3 }}>
           <Typography>{profile.description}</Typography>
@@ -75,7 +79,7 @@ export const getStaticProps = async () => {
     const response = await axios.get(`${backendUrl}/api`)
     const { profile, portfolios, skills, environments } = camelcaseKeys(
       response.data,
-      { deep: true },
+      { deep: true }
     )
 
     return {

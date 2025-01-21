@@ -4,6 +4,7 @@ import camelcaseKeys from 'camelcase-keys'
 import { PageTitle } from '@/components/utility/PageTitle'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { Portfolio } from '@/types/portfolio'
+import Head from 'next/head'
 
 type PortfolioIndexProps = {
   portfolios: Portfolio[]
@@ -11,12 +12,21 @@ type PortfolioIndexProps = {
 
 const PortfolioIndex = ({ portfolios }: PortfolioIndexProps) => {
   return (
-    <Container sx={{ paddingY: 10 }}>
-      <PageTitle title="Portfolio" />
-      <Box sx={{ marginTop: 4 }}>
-        <PortfolioCardList portfolios={portfolios} />
-      </Box>
-    </Container>
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="濱崎慶太のポートフォリオ一覧ページです。"
+        />
+        <title>keita-portfoilo | Portfolio</title>
+      </Head>
+      <Container sx={{ paddingY: 10 }}>
+        <PageTitle title="Portfolio" />
+        <Box sx={{ marginTop: 4 }}>
+          <PortfolioCardList portfolios={portfolios} />
+        </Box>
+      </Container>
+    </>
   )
 }
 

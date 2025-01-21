@@ -13,6 +13,7 @@ import { List } from '@/features/portfolioDetail/components/List'
 import { Section } from '@/features/portfolioDetail/components/Section'
 import { StackTable } from '@/features/portfolioDetail/components/StackTable'
 import { Portfolio } from '@/types/portfolio'
+import Head from 'next/head'
 
 type PortfolioDetailProps = {
   portfolio: Portfolio
@@ -20,64 +21,73 @@ type PortfolioDetailProps = {
 
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
-    portfolio.thumbnail,
+    portfolio.thumbnail
   )
 
   const handleImageClick = (imageUrl: string) => {
     setSelectedThumbnail(imageUrl)
   }
   return (
-    <Container maxWidth="md" sx={{ paddingY: 10 }}>
-      <TextAlignLayout>
-        <Typography variant="h3">{portfolio.name}</Typography>
-      </TextAlignLayout>
-      <Box sx={{ marginTop: 4 }}>
-        <ImageGallery
-          thumbnail={selectedThumbnail}
-          items={portfolio.images}
-          onClick={handleImageClick}
+    <>
+      <Head>
+        <meta
+          name="description"
+          content={`${portfolio.name}の詳細ページです。概要、使用技術、制作期間、機能一覧、ページ一覧、こだわりポイント、苦労した点などを紹介します。`}
         />
-      </Box>
-      <Section title="説明">
-        <Typography>{portfolio.description}</Typography>
-      </Section>
-      <Box
-        sx={{
-          marginTop: 4,
-          display: 'flex',
-          gap: 2,
-          flexDirection: {
-            xs: 'column',
-            sm: 'row',
-          },
-        }}
-      >
-        <DemoLink url={portfolio.demoUrl} />
-        <GithubLink url={portfolio.githubUrl} />
-        <BlogLink url={portfolio.blogUrl} />
-      </Box>
-      <Box sx={{ marginTop: 4 }}>
-        <TagList tags={portfolio.tags} />
-      </Box>
-      <Section title="制作期間">
-        <Typography>約{portfolio.duration}日</Typography>
-      </Section>
-      <Section title="使用技術">
-        <StackTable stacks={portfolio.techStacks} />
-      </Section>
-      <Section title="機能一覧">
-        <List items={portfolio.features} />
-      </Section>
-      <Section title="ページ一覧">
-        <List items={portfolio.pages} />
-      </Section>
-      <Section title="こだわった点">
-        <Typography>{portfolio.commitment}</Typography>
-      </Section>
-      <Section title="苦労した点">
-        <Typography>{portfolio.challenges}</Typography>
-      </Section>
-    </Container>
+        <title>keita-portfoilo | {portfolio.name}</title>
+      </Head>
+      <Container maxWidth="md" sx={{ paddingY: 10 }}>
+        <TextAlignLayout>
+          <Typography variant="h3">{portfolio.name}</Typography>
+        </TextAlignLayout>
+        <Box sx={{ marginTop: 4 }}>
+          <ImageGallery
+            thumbnail={selectedThumbnail}
+            items={portfolio.images}
+            onClick={handleImageClick}
+          />
+        </Box>
+        <Section title="説明">
+          <Typography>{portfolio.description}</Typography>
+        </Section>
+        <Box
+          sx={{
+            marginTop: 4,
+            display: 'flex',
+            gap: 2,
+            flexDirection: {
+              xs: 'column',
+              sm: 'row',
+            },
+          }}
+        >
+          <DemoLink url={portfolio.demoUrl} />
+          <GithubLink url={portfolio.githubUrl} />
+          <BlogLink url={portfolio.blogUrl} />
+        </Box>
+        <Box sx={{ marginTop: 4 }}>
+          <TagList tags={portfolio.tags} />
+        </Box>
+        <Section title="制作期間">
+          <Typography>約{portfolio.duration}日</Typography>
+        </Section>
+        <Section title="使用技術">
+          <StackTable stacks={portfolio.techStacks} />
+        </Section>
+        <Section title="機能一覧">
+          <List items={portfolio.features} />
+        </Section>
+        <Section title="ページ一覧">
+          <List items={portfolio.pages} />
+        </Section>
+        <Section title="こだわった点">
+          <Typography>{portfolio.commitment}</Typography>
+        </Section>
+        <Section title="苦労した点">
+          <Typography>{portfolio.challenges}</Typography>
+        </Section>
+      </Container>
+    </>
   )
 }
 

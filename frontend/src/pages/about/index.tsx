@@ -11,6 +11,7 @@ import { Career } from '@/types/career'
 import { Certification } from '@/types/certification'
 import { Hobby } from '@/types/hobby'
 import { Profile } from '@/types/profile'
+import Head from 'next/head'
 
 export type AboutProps = {
   profile: Profile
@@ -21,23 +22,32 @@ export type AboutProps = {
 
 const About = ({ profile, careers, certifications, hobbies }: AboutProps) => {
   return (
-    <Container maxWidth="sm" sx={{ paddingY: 10 }}>
-      <PageTitle title="About" />
-      <Box sx={{ marginTop: 4 }}>
-        <Section title="自己紹介">
-          <ProfileInfo profile={profile} />
-        </Section>
-        <Section title="経歴">
-          <CareerTable careers={careers} />
-        </Section>
-        <Section title="資格">
-          <CertificationList certifications={certifications} />
-        </Section>
-        <Section title="趣味">
-          <HobbyList hobbies={hobbies} />
-        </Section>
-      </Box>
-    </Container>
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="濱崎慶太の自己紹介ページです。これまでの経歴、取得した資格、趣味などをご紹介します。"
+        />
+        <title>keita-portfoilo | About</title>
+      </Head>
+      <Container maxWidth="sm" sx={{ paddingY: 10 }}>
+        <PageTitle title="About" />
+        <Box sx={{ marginTop: 4 }}>
+          <Section title="自己紹介">
+            <ProfileInfo profile={profile} />
+          </Section>
+          <Section title="経歴">
+            <CareerTable careers={careers} />
+          </Section>
+          <Section title="資格">
+            <CertificationList certifications={certifications} />
+          </Section>
+          <Section title="趣味">
+            <HobbyList hobbies={hobbies} />
+          </Section>
+        </Box>
+      </Container>
+    </>
   )
 }
 
@@ -47,7 +57,7 @@ export const getStaticProps = async () => {
     const response = await axios.get(`${backendUrl}/api/about`)
     const { profile, careers, certifications, hobbies } = camelcaseKeys(
       response.data,
-      { deep: true },
+      { deep: true }
     )
 
     return {
