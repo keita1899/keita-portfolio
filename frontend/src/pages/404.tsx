@@ -1,6 +1,6 @@
-import { FlexLayout } from '@/components/layouts/common/FlexLayout'
 import { Button, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import { FlexLayout } from '@/components/layouts/common/FlexLayout'
 
 const Custom404 = () => {
   const router = useRouter()
