@@ -1,6 +1,7 @@
 import { Box, Container } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { PageTitle } from '@/components/utility/PageTitle'
 import { SkillAccordion } from '@/features/skill/components/SkillAccordion'
@@ -30,7 +31,7 @@ const SkillIndex = ({ skills }: SkillIndexProps) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<SkillIndexProps> = async () => {
   try {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
     const skillsRes = await axios.get(`${backendUrl}/api/skills`)

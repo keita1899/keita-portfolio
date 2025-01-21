@@ -1,6 +1,7 @@
 import { Box, Container } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { PageTitle } from '@/components/utility/PageTitle'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
@@ -30,7 +31,7 @@ const PortfolioIndex = ({ portfolios }: PortfolioIndexProps) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<PortfolioIndexProps> = async () => {
   try {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
     const portfoliosRes = await axios.get(`${backendUrl}/api/portfolios`)

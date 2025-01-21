@@ -19,6 +19,10 @@ type PortfolioDetailProps = {
   portfolio: Portfolio
 }
 
+type PortfolioDetailParams = {
+  id: string
+}
+
 const PortfolioDetail = ({ portfolio }: PortfolioDetailProps) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(
     portfolio.thumbnail,
@@ -103,7 +107,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: 'blocking' }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<
+  PortfolioDetailProps,
+  PortfolioDetailParams
+> = async ({ params }) => {
   const { id } = params!
 
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
