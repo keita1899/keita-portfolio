@@ -1,10 +1,10 @@
 import { Box, Container } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import Head from 'next/head'
 import { PageTitle } from '@/components/utility/PageTitle'
 import { SkillAccordion } from '@/features/skill/components/SkillAccordion'
 import { Skill } from '@/types/skill'
-import Head from 'next/head'
 
 type SkillIndexProps = {
   skills: Skill[]

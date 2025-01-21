@@ -1,10 +1,10 @@
 import { Box, Container } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import Head from 'next/head'
 import { PageTitle } from '@/components/utility/PageTitle'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { Portfolio } from '@/types/portfolio'
-import Head from 'next/head'
 
 type PortfolioIndexProps = {
   portfolios: Portfolio[]

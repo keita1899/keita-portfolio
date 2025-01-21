@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import Head from 'next/head'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
@@ -12,7 +13,6 @@ import { Environment } from '@/types/environments'
 import { Portfolio } from '@/types/portfolio'
 import { Profile } from '@/types/profile'
 import { Skill } from '@/types/skill'
-import Head from 'next/head'
 
 type IndexProps = {
   profile: Pick<Profile, 'description'>
@@ -79,7 +79,7 @@ export const getStaticProps = async () => {
     const response = await axios.get(`${backendUrl}/api`)
     const { profile, portfolios, skills, environments } = camelcaseKeys(
       response.data,
-      { deep: true }
+      { deep: true },
     )
 
     return {
