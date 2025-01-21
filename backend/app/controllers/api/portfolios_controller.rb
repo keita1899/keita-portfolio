@@ -4,7 +4,7 @@ class Api::PortfoliosController < ApplicationController
   before_action :set_user
 
   def index
-    portfolios = @user.portfolios.includes(:features, :pages, :images, :tech_stacks, :tags)
+    portfolios = @user.portfolios.includes(:tags)
 
     render json: portfolios
   end
