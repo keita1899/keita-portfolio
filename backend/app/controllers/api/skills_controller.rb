@@ -7,7 +7,7 @@ class Api::SkillsController < ApplicationController
     skills = @user.skills.includes(:abilities)
 
     if skills.present?
-      render json: skills.as_json(include: :abilities)
+      render json: skills
     else
       render json: { error: "Skill not found" }, status: :not_found
     end
