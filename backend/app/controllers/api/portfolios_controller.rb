@@ -7,7 +7,7 @@ class Api::PortfoliosController < ApplicationController
   def index
     portfolios = @user.portfolios.includes(:tags)
 
-    render json: portfolios
+    render json: portfolios, each_serializer: PortfolioListSerializer
   end
 
   def show
