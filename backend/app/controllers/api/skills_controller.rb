@@ -4,10 +4,10 @@ class Api::SkillsController < ApplicationController
   before_action :set_user
 
   def index
-    skills = @user.skills.includes(:abilities)
+    skills = @user.skills
 
     if skills.present?
-      render json: skills
+      render json: skills, each_serializer: SkillSerializer
     else
       render json: { error: "Skill not found" }, status: :not_found
     end
