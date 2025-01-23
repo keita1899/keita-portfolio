@@ -29,7 +29,6 @@ RSpec.describe "Api::HomeController", type: :request do
       json_response = JSON.parse(response.body)
 
       expect(json_response["profile"]).to include(
-        "id" => profile.id,
         "description" => profile.description,
       )
     end

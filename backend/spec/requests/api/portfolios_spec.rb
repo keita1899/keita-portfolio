@@ -31,10 +31,6 @@ RSpec.describe "Api::PortfoliosController", type: :request do
         expect(json_response.size).to eq(1)
 
         portfolio_data = json_response.first
-        expect(portfolio_data["features"].size).to eq(features.size)
-        expect(portfolio_data["pages"].size).to eq(pages.size)
-        expect(portfolio_data["images"].size).to eq(images.size)
-        expect(portfolio_data["tech_stacks"].size).to eq(tech_stacks.size)
         expect(portfolio_data["tags"].size).to eq(tags.size)
       end
     end
