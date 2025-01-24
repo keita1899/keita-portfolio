@@ -9,14 +9,12 @@ RSpec.describe "Api::PortfoliosController", type: :request do
     }
 
     context "when user has portfolios" do
-      let!(:portfolio) { create(:portfolio, user: user) }
-      let!(:features) { create_list(:feature, 3, portfolio: portfolio) }
-      let!(:pages) { create_list(:page, 2, portfolio: portfolio) }
-      let!(:images) { create_list(:image, 2, portfolio: portfolio) }
-      let!(:tech_stacks) { create_list(:tech_stack, 2, portfolio: portfolio) }
+      let!(:portfolios) { create_list(:portfolio, 3, user: user) }
       let!(:tags) { create_list(:tag, 2) }
       before do
-        portfolio.tags << tags
+        portfolios.each do |portfolio|
+          portfolio.tags << tags
+        end
         get "/api/portfolios"
       end
 
@@ -28,7 +26,7 @@ RSpec.describe "Api::PortfoliosController", type: :request do
         json_response = JSON.parse(response.body)
 
         expect(json_response).to be_an(Array)
-        expect(json_response.size).to eq(1)
+        expect(json_response.size).to eq(3)
 
         portfolio_data = json_response.first
         expect(portfolio_data["tags"].size).to eq(tags.size)
