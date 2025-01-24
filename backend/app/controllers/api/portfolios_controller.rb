@@ -1,33 +1,27 @@
 class Api::PortfoliosController < ApplicationController
-  include UserFindable
-
-  before_action :set_user
-
   def index
-    portfolios = @user.portfolios.includes(:features, :pages, :images, :tech_stacks, :tags)
+    user = find_user
+    render json: { error: "User not found" }, status: :not_found and return if user.nil?
 
-    render json: portfolios, include: portfolio_includes
+    portfolios = user.portfolios.includes(:tags)
+    render json: portfolios, each_serializer: PortfolioListSerializer
   end
 
   def show
-    portfolio = @user.portfolios.includes(:features, :pages, :images, :tech_stacks, :tags).find_by(id: params[:id])
+    user = find_user
+    render json: { error: "User not found" }, status: :not_found and return if user.nil?
 
+    portfolio = find_portfolio(user)
     if portfolio.nil?
       render json: { error: "Portfolio not found" }, status: :not_found
     else
-      render json: portfolio, include: portfolio_includes
+      render json: portfolio
     end
   end
 
   private
 
-    def portfolio_includes
-      {
-        features: { only: [:id, :name] },
-        pages: { only: [:id, :name] },
-        images: { only: [:id, :url] },
-        tech_stacks: { only: [:id, :technology, :version] },
-        tags: { only: [:id, :name] },
-      }
+    def find_portfolio(user)
+      user.portfolios.includes(:features, :pages, :images, :tech_stacks, :tags).find_by(id: params[:id])
     end
 end

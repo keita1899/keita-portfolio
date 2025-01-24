@@ -1,6 +1,8 @@
 import { Box, Container, Typography } from '@mui/material'
 import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { TextAlignLayout } from '@/components/layouts/common/TextAlignLayout'
 import { PortfolioCardList } from '@/features/common/components/PortfolioCardList'
 import { DetailLink } from '@/features/home/components/DetailLink'
@@ -25,6 +27,9 @@ const Index = ({ profile, portfolios, skills, environments }: IndexProps) => {
 
   return (
     <>
+      <Head>
+        <title>keita-portfoilo | Home</title>
+      </Head>
       <Section title="About" backgroundColor="#fff">
         <Container maxWidth="xs" sx={{ marginTop: 3 }}>
           <Typography>{profile.description}</Typography>
@@ -69,7 +74,7 @@ const Index = ({ profile, portfolios, skills, environments }: IndexProps) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   try {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://backend:3000'
     const response = await axios.get(`${backendUrl}/api`)

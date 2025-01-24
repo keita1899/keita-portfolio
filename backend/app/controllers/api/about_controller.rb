@@ -1,19 +1,13 @@
 class Api::AboutController < ApplicationController
-  include UserFindable
-
-  before_action :set_user
-
   def index
-    profile = @user.profile
-    careers = @user.careers
-    certifications = @user.certifications
-    hobbies = @user.hobbies
+    user = find_user
+    render json: { error: "User not found" }, status: :not_found and return if user.nil?
+
     render json: {
-      profile: profile.as_json(only: [:id, :last_name, :first_name, :age, :birthday, :hometown, :avatar, :description, :github_url, :blog_url, :x_url,
-                                      :qiita_url]),
-      careers: careers.as_json(only: [:id, :organization, :detail, :start_date, :end_date]),
-      certifications: certifications.as_json(only: [:id, :name, :acquired_date]),
-      hobbies: hobbies.as_json(only: [:id, :name, :description]),
+      profile: ProfileSerializer.new(user.profile),
+      careers: ActiveModelSerializers::SerializableResource.new(user.careers, each_serializer: CareerSerializer),
+      certifications: ActiveModelSerializers::SerializableResource.new(user.certifications, each_serializer: CertificationSerializer),
+      hobbies: ActiveModelSerializers::SerializableResource.new(user.hobbies, each_serializer: HobbySerializer),
     }, status: :ok
   end
 end
