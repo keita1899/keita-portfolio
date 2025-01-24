@@ -30,11 +30,11 @@ RSpec.describe "Api::Skills", type: :request do
     context "when skills doesn't exist" do
       before { user.skills.destroy_all }
 
-      it "returns a not_found response with skill not found error" do
+      it "returns an empty array" do
         get "/api/skills"
-        expect(response).to have_http_status(:not_found)
+        expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body)
-        expect(json["error"]).to eq("Skill not found")
+        expect(json).to eq([])
       end
     end
   end
